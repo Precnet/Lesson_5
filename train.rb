@@ -1,4 +1,4 @@
-# require_relative 'Route'
+require_relative 'manufacturer.rb'
 
 TRAIN_TYPES = %w(passenger cargo)
 
