@@ -1,4 +1,8 @@
+require_relative 'manufacturer.rb'
+
 class PassengerCarriage
+  include Manufacturer
+
   NUMBER_LENGTH = 5
   BASE_36 = 36
   CARRIAGE_TYPE = 'passenger'
