@@ -232,6 +232,6 @@ class UserData
   end
 end
 
-user_interface = UserInterface.new
-user_interface.create_default_menu
-user_interface.main_loop
+# user_interface = UserInterface.new
+# user_interface.create_default_menu
+# user_interface.main_loop
