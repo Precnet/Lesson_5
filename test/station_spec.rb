@@ -92,5 +92,8 @@ describe 'Station' do
       @station.send_train('003')
       expect(@station.trains_at_station_by_type).to eq({})
     end
+    it 'should count class instances' do
+      expect(Station.all).to eq(11)
+    end
   end
 end
