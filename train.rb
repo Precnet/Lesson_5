@@ -6,6 +6,7 @@ class Train
   include Manufacturer
 
   attr_reader :number, :type, :current_speed, :current_station, :number_of_carriages, :route
+  @@trains = []
 
   def initialize(train_type, number_of_carriages, train_number = generate_train_number(10))
     @number = train_number
@@ -14,6 +15,12 @@ class Train
     @current_speed = 0
     @current_station = nil
     @route = nil
+    @@trains.push(self)
+  end
+
+  def self.find_train_by_number(number)
+    result = @@trains.select {|train| train.number == number}
+    result[0]
   end
 
   def increase_speed_by(km)
