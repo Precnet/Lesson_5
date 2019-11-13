@@ -6,7 +6,7 @@ require_relative 'passenger_carriage.rb'
 require_relative 'cargo_carriage.rb'
 
 class UserInterface
-  attr_reader :menu_items, @user_data
+  attr_reader :menu_items, :user_data
   def initialize
     @user_data = UserData.new
     @user_action = UserActions.new(@user_data)
