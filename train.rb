@@ -1,9 +1,12 @@
 require_relative 'manufacturer.rb'
+require_relative 'instance_counter.rb'
 
 TRAIN_TYPES = %w(passenger cargo)
 
 class Train
   include Manufacturer
+  include InstanceCounter
+  @@number_of_instances = 0
 
   attr_reader :number, :type, :current_speed, :current_station, :number_of_carriages, :route
   @@trains = []
@@ -16,6 +19,7 @@ class Train
     @current_station = nil
     @route = nil
     @@trains.push(self)
+    register_instance
   end
 
   def self.find_train_by_number(number)
