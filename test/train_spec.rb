@@ -123,5 +123,9 @@ describe Train do
       @train.move_backward
       expect { @train.get_previous_station }.to raise_error(RuntimeError)
     end
+    it 'should have manufacturer name' do
+      @train.set_manufacturer_name('Train inc.')
+      expect(@train.get_manufacturer_name).to eq('Train inc.')
+    end
   end
 end
