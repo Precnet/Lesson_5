@@ -1,15 +1,15 @@
 class Station
   attr_reader :name, :trains_at_station
-  @number_of_instances = 0
+  @@number_of_instances = 0
 
   def self.all
-    @number_of_instances
+    @@number_of_instances
   end
 
   def initialize(station_name)
     @name = check_station_name(station_name)
     @trains_at_station = []
-    @number_of_instances += 1
+    @@number_of_instances += 1
   end
 
   def train_arrived(new_train)
