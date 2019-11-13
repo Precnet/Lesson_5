@@ -127,5 +127,9 @@ describe Train do
       @train.set_manufacturer_name('Train inc.')
       expect(@train.get_manufacturer_name).to eq('Train inc.')
     end
+    it 'should search trains by number' do
+      expect(Train.find_train_by_number @train.number).to eq(@train)
+      expect(Train.find_train_by_number 'some_random_number').to be_nil
+    end
   end
 end
