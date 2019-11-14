@@ -1,34 +1,24 @@
+# counter for instances of class
 module InstanceCounter
-
   def self.included(base)
     base.extend ClassMethods
     base.send :include, InstanceMethods
   end
 
+  # class methods
   module ClassMethods
-    @number_of_instances = 0
+    attr_accessor :number_of_instances
+
     def instances
-
+      @number_of_instances ||= 0
     end
   end
 
+  # instance methods
   module InstanceMethods
-    @@number_of_instances = 0
     def register_instance
-      @@number_of_instances += 1
+      self.class.number_of_instances ||= 0
+      self.class.number_of_instances += 1
     end
   end
 end
-
-class Smth
-  include InstanceCounter
-
-  def initialize
-    # @number_of_instances += 1
-    register_instance
-    # p @number_of_instances.class
-  end
-end
-
-p Smth.new
-p Smth.instances
