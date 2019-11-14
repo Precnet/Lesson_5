@@ -16,6 +16,8 @@ module InstanceCounter
 
   # instance methods
   module InstanceMethods
+    private
+
     def register_instance
       self.class.number_of_instances ||= 0
       self.class.number_of_instances += 1
