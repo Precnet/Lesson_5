@@ -95,5 +95,10 @@ describe 'Station' do
     it 'should count class instances' do
       expect(Station.all).to eq(11)
     end
+    it 'should count instances via mixin' do
+      expect(Station.instances).to eq(11)
+      Station.new('1234')
+      expect(Station.instances).to eq(12)
+    end
   end
 end

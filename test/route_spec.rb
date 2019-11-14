@@ -31,4 +31,9 @@ describe 'Route' do
     expect(route_2.number).not_to eq(@route.number)
     expect(route_3.number).not_to eq(@route.number)
   end
+  it 'should count instances via mixin' do
+    expect(Route.instances).to eq(5)
+    Route.new('first', 'last')
+    expect(Route.instances).to eq(6)
+  end
 end

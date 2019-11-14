@@ -1,4 +1,4 @@
-require_relative 'instance_counter'
+require_relative 'instance_counter.rb'
 
 class Route
   include InstanceCounter
