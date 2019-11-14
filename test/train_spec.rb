@@ -131,5 +131,11 @@ describe Train do
       expect(Train.find_train_by_number @train.number).to eq(@train)
       expect(Train.find_train_by_number 'some_random_number').to be_nil
     end
+    it 'should count instances' do
+      # p Train.instances
+      print 'Instance counter = '
+      p Train.instances
+      # @train.register_instance
+    end
   end
 end

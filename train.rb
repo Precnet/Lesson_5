@@ -6,7 +6,6 @@ TRAIN_TYPES = %w(passenger cargo)
 class Train
   include Manufacturer
   include InstanceCounter
-  @@number_of_instances = 0
 
   attr_reader :number, :type, :current_speed, :current_station, :number_of_carriages, :route
   @@trains = []
