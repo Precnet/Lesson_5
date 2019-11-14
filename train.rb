@@ -7,7 +7,8 @@ class Train
   include Manufacturer
   include InstanceCounter
 
-  attr_reader :number, :type, :current_speed, :current_station, :number_of_carriages, :route
+  attr_reader :number, :type, :current_speed, :current_station,
+              :number_of_carriages, :route
   @@trains = []
 
   def initialize(train_type, number_of_carriages, train_number = generate_train_number(10))
@@ -30,7 +31,8 @@ class Train
     @current_speed += km
     if @current_speed > 120
       @current_speed = 120
-      # puts "Train is at it`s maximum speed - 120km/h. It can`t safely increase it`s speed any more."
+      # puts "Train is at it`s maximum speed - 120km/h. It can`t safely increase
+      # it`s speed any more."
     end
     current_speed
   end
