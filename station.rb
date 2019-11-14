@@ -1,4 +1,8 @@
+require_relative 'instance_counter.rb'
+
 class Station
+  include InstanceCounter
+
   attr_reader :name, :trains_at_station
   @@number_of_instances = 0
 
@@ -10,6 +14,7 @@ class Station
     @name = check_station_name(station_name)
     @trains_at_station = []
     @@number_of_instances += 1
+    register_instance
   end
 
   def train_arrived(new_train)
