@@ -4,7 +4,6 @@ class Route
   include InstanceCounter
 
   attr_reader :stations, :number
-  @@number_of_instances = 0
 
   def initialize(first_station, last_station, route_number=generate_route_number(5))
     @stations = [first_station, last_station]
