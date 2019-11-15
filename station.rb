@@ -24,12 +24,13 @@ class Station
   def send_train(train_number)
     error_message = "There is no train with number '#{train_number}' at station"
     raise ArgumentError, error_message unless train_at_station?(train_number)
-    train_index =  get_train_index_by(train_number)
+
+    train_index = get_train_index_by(train_number)
     @trains_at_station.delete_at(train_index)
   end
 
   def trains_at_station_of_type(train_type)
-    @trains_at_station.select {|train| train if train.type == train_type}.map { |train| train.number}
+    @trains_at_station.select { |train| train if train.type == train_type }.map { |train| train.number }
   end
 
   def trains_at_station_by_type
@@ -42,10 +43,15 @@ class Station
   private
 
   def check_station_name(name)
-    raise ArgumentError, 'Station name can`t be nil!' unless name
-    raise ArgumentError, 'Station name should be of String class!' unless name.is_a?(String)
-    raise ArgumentError, 'Station name can`t be empty!' unless name.length > 0
-    raise ArgumentError, 'Station name is too long! Should be <= 20 symbols.' unless name.length <= 20
+    nil_message = 'Station name can`t be nil!'
+    type_message = 'Station name should be of String class!'
+    empty_message = 'Station name can`t be empty!'
+    long_message = 'Station name is too long! Should be <= 20 symbols.'
+    raise ArgumentError, nil_message unless name
+    raise ArgumentError, type_message unless name.is_a?(String)
+    raise ArgumentError, empty_message if name.length.negative?
+    raise ArgumentError, long_message unless name.length <= 20
+
     name
   end
 
