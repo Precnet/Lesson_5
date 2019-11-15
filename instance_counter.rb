@@ -6,16 +6,14 @@ module InstanceCounter
   end
 
   module ClassMethods
-    @number_of_instances = 0
     def instances
-
+      'ok 1'
     end
   end
 
   module InstanceMethods
-    @@number_of_instances = 0
     def register_instance
-      @@number_of_instances += 1
+      p 'ok'
     end
   end
 end
@@ -30,5 +28,5 @@ class Smth
   end
 end
 
-p Smth.new
+Smth.new
 p Smth.instances
