@@ -49,14 +49,14 @@ class Station
     long_message = 'Station name is too long! Should be <= 20 symbols.'
     raise ArgumentError, nil_message unless name
     raise ArgumentError, type_message unless name.is_a?(String)
-    raise ArgumentError, empty_message if name.length.negative?
+    raise ArgumentError, empty_message unless name.length.positive?
     raise ArgumentError, long_message unless name.length <= 20
 
     name
   end
 
   def train_at_station?(train_number)
-    @trains_at_station.map { |train| train.number }.include? train_number
+    @trains_at_station.map(&:number).include? train_number
   end
 
   def get_train_index_by(train_name)
