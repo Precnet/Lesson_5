@@ -4,7 +4,6 @@ class Station
   include InstanceCounter
 
   attr_reader :name, :trains_at_station
-  @@number_of_instances = 0
 
   def self.all
     @@number_of_instances
