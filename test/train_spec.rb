@@ -79,8 +79,8 @@ describe Train do
       expect(@train.current_station).to be_nil
       expect{ @train.move_forward }.to raise_error(RuntimeError)
       expect{ @train.move_backward }.to raise_error(RuntimeError)
-      expect{ @train.get_previous_station }.to raise_error(RuntimeError)
-      expect{ @train.get_next_station }.to raise_error(RuntimeError)
+      expect{ @train.previous_station }.to raise_error(RuntimeError)
+      expect{ @train.next_station }.to raise_error(RuntimeError)
     end
     it 'should set route and put train to first station' do
       route = double('Route', stations: %w[first second third])
@@ -111,17 +111,17 @@ describe Train do
       route = double('Route', stations: %w[first second third])
       @train.set_route(route)
       @train.move_forward
-      expect(@train.get_next_station).to eq('third')
+      expect(@train.next_station).to eq('third')
       @train.move_forward
-      expect { @train.get_next_station }.to raise_error(RuntimeError)
+      expect { @train.next_station }.to raise_error(RuntimeError)
     end
     it 'should return previous station if it is available' do
       route = double('Route', stations: %w[first second third])
       @train.set_route(route)
       @train.move_forward
-      expect(@train.get_previous_station).to eq('first')
+      expect(@train.previous_station).to eq('first')
       @train.move_backward
-      expect { @train.get_previous_station }.to raise_error(RuntimeError)
+      expect { @train.previous_station }.to raise_error(RuntimeError)
     end
     it 'should have manufacturer name' do
       @train.manufacturer = 'Train inc.'

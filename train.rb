@@ -3,6 +3,7 @@ require_relative 'instance_counter.rb'
 
 TRAIN_TYPES = %w[passenger cargo].freeze
 
+# train class
 class Train
   include Manufacturer
   include InstanceCounter
@@ -11,11 +12,10 @@ class Train
               :number_of_carriages, :route
   @@trains = []
 
-  def initialize(train_type, number_of_carriages,
-                 train_number = generate_train_number(10))
-    @number = train_number
+  def initialize(type, number_of_carriages, number = generate_train_number(10))
+    @number = number
     @number_of_carriages = check_number_of_carriages(number_of_carriages)
-    @type = check_train_type(train_type)
+    @type = check_train_type(type)
     @current_speed = 0
     @current_station = nil
     @route = nil
@@ -65,21 +65,21 @@ class Train
 
   def move_forward
     check_route
-    next_message = 'Train is already at it`s final station and can`t move further!'
-    raise next_message unless next_station_available?
+    message = 'Train is already at it`s final station and can`t move further!'
+    raise message unless next_station_available?
 
     @current_station = @route.stations[next_station_index]
   end
 
   def move_backward
     check_route
-    previous_message = 'Train is already at it`s first station and can`t move backward!'
-    raise previous_message unless previous_station_available?
+    message = 'Train is already at it`s first station and can`t move backward!'
+    raise message unless previous_station_available?
 
     @current_station = @route.stations[previous_station_index]
   end
 
-  def get_previous_station
+  def previous_station
     check_route
     no_station = 'Can`t get previous station for first station!'
     raise no_station unless previous_station_available?
@@ -87,7 +87,7 @@ class Train
     @route.stations[previous_station_index]
   end
 
-  def get_next_station
+  def next_station
     check_route
     no_station = 'Can`t get next station for last station!'
     raise no_station unless next_station_available?
@@ -99,14 +99,13 @@ class Train
 
   # should be private because there is no need to call it in descendants
   def generate_train_number(number_length)
-    # nice little magick with converting int to str with Base36
     rand(36**number_length).to_s(36)
   end
 
   # should be private because descendants are created without any carriages
   def check_number_of_carriages(number)
-    wrong_message = "Number of carriages should be positive Integer. Got: #{number}"
-    raise ArgumentError, wrong_message unless number.is_a?(Integer) && number >= 0
+    message = "Number of carriages should be positive Integer. Got: #{number}"
+    raise ArgumentError, message unless number.is_a?(Integer) && number >= 0
 
     number
   end
@@ -127,8 +126,7 @@ class Train
 
   # should be private because there is no need to call it in descendants
   def next_station_available?
-    last_station_index = @route.stations.length - 1
-    current_station_index != last_station_index
+    current_station_index != @route.stations.length - 1
   end
 
   # should be private because there is no need to call it in descendants
