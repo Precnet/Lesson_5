@@ -97,9 +97,9 @@ describe 'Station' do
       expect(Station.all.select { |station| station.class == Station }.length).to eq(11)
     end
     it 'should count instances via mixin' do
-      expect(Station.instances).to eq(11)
+      expect(Station.number_of_instances).to eq(11)
       Station.new('1234')
-      expect(Station.instances).to eq(12)
+      expect(Station.number_of_instances).to eq(12)
     end
   end
 end

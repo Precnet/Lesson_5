@@ -9,7 +9,7 @@ module InstanceCounter
   module ClassMethods
     attr_accessor :number_of_instances
 
-    def instances
+    def number_of_instances
       @number_of_instances ||= 0
     end
   end

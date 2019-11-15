@@ -132,9 +132,9 @@ describe Train do
       expect(Train.find_train_by_number('some_random_number')).to be_nil
     end
     it 'should count instances' do
-      expect(Train.instances).to eq(9)
+      expect(Train.number_of_instances).to eq(9)
       Train.new('cargo', 2)
-      expect(Train.instances).to eq(10)
+      expect(Train.number_of_instances).to eq(10)
     end
   end
 end
