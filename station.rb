@@ -1,5 +1,9 @@
+# frozen_string_literal: true
+
+# station class
 require_relative 'instance_counter.rb'
 
+# station class
 class Station
   include InstanceCounter
 
@@ -29,14 +33,14 @@ class Station
     @trains_at_station.delete_at(train_index)
   end
 
-  def trains_at_station_of_type(train_type)
-    @trains_at_station.select { |train| train if train.type == train_type }.map { |train| train.number }
+  def trains_at_station_of_type(type)
+    @trains_at_station.select { |train| train if train.type == type }.map(&:number)
   end
 
   def trains_at_station_by_type
     result = {}
-    trains_at_station_types = @trains_at_station.map { |train| train.type}
-    trains_at_station_types.uniq.each {|type| result[type] = trains_at_station_types.count(type)}
+    train_types = @trains_at_station.map(&:type)
+    train_types.uniq.each { |type| result[type] = train_types.count(type) }
     result
   end
 

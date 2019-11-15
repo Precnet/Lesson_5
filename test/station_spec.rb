@@ -8,7 +8,7 @@ describe 'Station' do
   end
   it 'shouldn`t create station with incorrect name' do
     expect { Station.new(nil) }.to raise_error(ArgumentError)
-    expect { Station.new(2452342) }.to raise_error(ArgumentError)
+    expect { Station.new(342) }.to raise_error(ArgumentError)
     expect { Station.new(['good_station_name']) }.to raise_error(ArgumentError)
     expect { Station.new('') }.to raise_error(ArgumentError)
     expect { Station.new('very-very-very long station name') }.to raise_error(ArgumentError)
