@@ -58,7 +58,7 @@ class Train
     @number_of_carriages -= 1
   end
 
-  def set_route(route)
+  def define_route(route)
     @route = route
     @current_station = route.stations[0]
   end

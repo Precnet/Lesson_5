@@ -84,12 +84,12 @@ describe Train do
     end
     it 'should set route and put train to first station' do
       route = double('Route', stations: %w[first second third])
-      @train.set_route(route)
+      @train.define_route(route)
       expect(@train.current_station).to eq('first')
     end
     it 'should move train to next station if it is available' do
       route = double('Route', stations: %w[first second third])
-      @train.set_route(route)
+      @train.define_route(route)
       @train.move_forward
       expect(@train.current_station).to eq('second')
       @train.move_forward
@@ -98,7 +98,7 @@ describe Train do
     end
     it 'should move train to previous station if it is available' do
       route = double('Route', stations: %w[first second third])
-      @train.set_route(route)
+      @train.define_route(route)
       @train.move_forward
       @train.move_forward
       @train.move_backward
@@ -109,7 +109,7 @@ describe Train do
     end
     it 'should return next station if it is available' do
       route = double('Route', stations: %w[first second third])
-      @train.set_route(route)
+      @train.define_route(route)
       @train.move_forward
       expect(@train.next_station).to eq('third')
       @train.move_forward
@@ -117,7 +117,7 @@ describe Train do
     end
     it 'should return previous station if it is available' do
       route = double('Route', stations: %w[first second third])
-      @train.set_route(route)
+      @train.define_route(route)
       @train.move_forward
       expect(@train.previous_station).to eq('first')
       @train.move_backward

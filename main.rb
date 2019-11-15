@@ -145,7 +145,7 @@ class UserActions
     check_route_existence(route_name)
     check_train_existence(train_number)
     # register route and set current station as first station
-    @user_data.trains[train_number].set_route(@user_data.routes[route_name])
+    @user_data.trains[train_number].define_route(@user_data.routes[route_name])
     # register train at station
     station_name = @user_data.trains[train_number].current_station
     @user_data.stations[station_name].train_arrived(@user_data.trains[train_number])
