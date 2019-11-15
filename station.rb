@@ -60,6 +60,6 @@ class Station
   end
 
   def get_train_index_by(train_name)
-    @trains_at_station.map { |train| train.number }.find_index(train_name)
+    @trains_at_station.map(&:number).find_index(train_name)
   end
 end
