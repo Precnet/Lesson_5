@@ -5,6 +5,12 @@ class Carriage
   BASE_36 = 36
   CARRIAGE_TYPE = ''
 
+  attr_reader :number, :type
+
+  def initialize(carriage_number)
+    @number = carriage_number
+  end
+
   protected
 
   # this is a method for creating default name for carriage it should not be used outside of object constructor
