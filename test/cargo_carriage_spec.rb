@@ -9,7 +9,7 @@ describe 'CargoCarriage' do
     expect(@carriage.type).to eq('cargo')
   end
   it 'should have manufacturer name' do
-    @carriage.set_manufacturer_name('Train inc.')
-    expect(@carriage.get_manufacturer_name).to eq('Train inc.')
+    @carriage.manufacturer = 'Train inc.'
+    expect(@carriage.manufacturer).to eq('Train inc.')
   end
 end

@@ -16,7 +16,8 @@ class CargoCarriage
 
   private
 
-  # this is a method for creating default name for carriage it should not be used outside of object constructor
+  # this is a method for creating default name for carriage it should not be
+  # used outside of object constructor
   def generate_carriage_number(number_length)
     CARRIAGE_TYPE + '_' + rand(BASE_36 ** number_length).to_s(BASE_36)
   end
