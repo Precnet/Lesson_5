@@ -92,8 +92,9 @@ describe 'Station' do
       @station.send_train('003')
       expect(@station.trains_at_station_by_type).to eq({})
     end
-    it 'should count class instances' do
-      expect(Station.all).to eq(11)
+    it 'should return all instances instances' do
+      expect(Station.all.length).to eq(11)
+      expect(Station.all.select { |station| station.class == Station }.length).to eq(11)
     end
     it 'should count instances via mixin' do
       expect(Station.instances).to eq(11)
